@@ -6,22 +6,22 @@
 
 ### 2. 教程:
 
-#### 1) 固件下载
+#### 2.1 固件下载
 我们选择选择x86 64bits(MBR dos)或者x86 64bits(UEFI gpt)的固件，下载地址:
 [https://x-wrt.com/rom/](https://x-wrt.com/rom/)
 
-#### 2) VPS系统部署
+#### 2.2 VPS系统部署
 我们首先安装其它系统比如Ubuntu，然后从Ubuntu系统刷机变成OpenWrt系统。为什么不直接安装OpenWrt固件呢？因为云平台不支持。不过有些云平台是支持的，比如Linode可以启动一个小的拯救系统做系统安装的事情，再比如有些平台可以启动自定义ISO镜像，那安装方法自然是制作一个Live CD或者安装光盘之类了。
 
 废话不多说，安装VPS初始系统: 选择Ubuntu系统，按照云平台指导的流程完全初始的部署
 
-#### 3) 上传固件
+#### 2.3 上传固件
 把固件（比如x-wrt-4.0-b2018xxxxxxxx-x86-64-combined-ext4.img.gz）上传到VPS的 `/root/` 目录下，保存为 `/root/x-wrt.img.gz` 其它目录也是可以的，当然也可以通过网络直接下载回来:
 ```sh
 wget -O /root/x-wrt.img.gz --no-check-certificate https://x-wrt.com/rom/x-wrt-<XXXXXX>-x86-64-combined-ext4.img.gz
 ```
 
-#### 4) 确定磁盘的路径
+#### 2.4 确定磁盘的路径
 用 `df -h` 命令查看 `/` 挂载的设备是什么，比如是 `/dev/vda1` （有些平台是 `/dev/sda1` 或者其它），这里很容易可以确定磁盘路径是 `/dev/vda` （去掉了尾数1）。
 ```
 # df -h
@@ -35,7 +35,7 @@ tmpfs           937M     0  937M   0% /sys/fs/cgroup
 tmpfs           188M     0  188M   0% /run/user/500
 ```
 
-#### 5) 确定网络配置
+#### 2.5 确定网络配置
 有些平台给VPS自动DHCP分配IP，有些平台不是自动而是静态配置IP，我们需要根据实际情况确定好是哪一种方式。
 
 假如是静态配置的方式，一般查看 `/etc/network/interfaces` 文件可以看到实际的配置参数，比如:
@@ -54,7 +54,7 @@ iface eth0 inet static
 
 如果是DHCP自动的方式，就更简单了，后面刷机的时候，就知道啦。
 
-#### 6) 刷机准备
+#### 2.6 刷机准备
 由于刷机是在原有系统运行的情况下直接刷写磁盘，所以为了安全我们要让 `/` 文件系统挂成只读，防止相互写入导致数据错乱最后刷成砖。修改配置文件 `/etc/fstab` 把 `/` 挂载的那一行的选项改成 `ro` 意思是ReadOnly，然后 `reboot` 重启系统。
 ```
 # /etc/fstab: static file system information.
@@ -78,7 +78,7 @@ tmpfs           188M     0  188M   0% /run/user/500
 ```
 不难发现 `/dev/shm/` 这个路径是tmpfs类型，有900M之多的可用空间，非常适合作为刷机的临时内存路径。注意了，x-wrt固件解压后的大小是256M，所以要选择大于300M的临时内存路径，否则空间不够。
 
-#### 7) 开始刷机
+#### 2.7 开始刷机
 刷机阶段一: 把固件连同配置参数组合一起写入 `/dev/shm/` 这个临时路径。
 ```sh
 (zcat /root/x-wrt.img.gz; echo open=443,network=dhcp) >/dev/shm/x-wrt.img
