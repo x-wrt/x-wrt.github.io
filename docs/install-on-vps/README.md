@@ -8,9 +8,7 @@
 
 #### 1) 固件下载
 我们选择选择x86 64bits(MBR dos)或者x86 64bits(UEFI gpt)的固件，下载地址:
-```
-https://router-sh.ptpt52.com/rom/
-```
+[https://x-wrt.com/rom/](https://x-wrt.com/rom/)
 
 #### 2) VPS系统部署
 我们首先安装其它系统比如Ubuntu，然后从Ubuntu系统刷机变成OpenWrt系统。为什么不直接安装OpenWrt固件呢？因为云平台不支持。不过有些云平台是支持的，比如Linode可以启动一个小的拯救系统做系统安装的事情，再比如有些平台可以启动自定义ISO镜像，那安装方法自然是制作一个Live CD或者安装光盘之类了。
@@ -20,7 +18,7 @@ https://router-sh.ptpt52.com/rom/
 #### 3) 上传固件
 把固件（比如x-wrt-4.0-b2018xxxxxxxx-x86-64-combined-ext4.img.gz）上传到VPS的 `/root/` 目录下，保存为 `/root/x-wrt.img.gz` 其它目录也是可以的，当然也可以通过网络直接下载回来:
 ```sh
-wget -O /root/x-wrt.img.gz --no-check-certificate https://router-sh.ptpt52.com/rom/x-wrt-<XXXXXX>-x86-64-combined-ext4.img.gz
+wget -O /root/x-wrt.img.gz --no-check-certificate https://x-wrt.com/rom/x-wrt-<XXXXXX>-x86-64-combined-ext4.img.gz
 ```
 
 #### 4) 确定磁盘的路径
