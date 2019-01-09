@@ -8,7 +8,7 @@
 
 ### [编译教程](https://blog.x-wrt.com/docs/build.html)
 ### [IPv6入门教程](https://blog.x-wrt.com/docs/ipv6-intr.html)
-### [多拨多线路和负载均衡配置教程](https://blog.x-wrt.com/docs/xwan.html)
+### [多拨负载均衡配置](https://blog.x-wrt.com/docs/xwan.html)
 ### [基本网络配置指引](https://blog.x-wrt.com/docs/net-basic.html)
 ### [在VPS上部署X-Wrt](https://blog.x-wrt.com/docs/install-on-vps/)
 
