@@ -6,11 +6,11 @@
 
 ## 教程
 
-### [编译教程](https://blog.x-wrt.com/docs/build.html)
-### [IPv6入门教程](https://blog.x-wrt.com/docs/ipv6-intr.html)
-### [多拨和负载均衡配置](https://blog.x-wrt.com/docs/xwan/)
-### [基本网络配置指引](https://blog.x-wrt.com/docs/net-basic.html)
-### [在VPS上部署X-Wrt](https://blog.x-wrt.com/docs/install-on-vps/)
+### [编译教程](./docs/build.md)
+### [IPv6入门教程](./docs/ipv6-intr.md)
+### [多拨和负载均衡配置](./docs/xwan/)
+### [基本网络配置指引](./docs/net-basic.md)
+### [在VPS上部署X-Wrt](./docs/install-on-vps/)
 
 ## Contributing
 
