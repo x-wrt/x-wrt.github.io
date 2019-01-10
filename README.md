@@ -6,7 +6,7 @@
 
 ## 教程
 
-### [编译教程](./docs/build.md)
+### [编译教程](./docs/build/)
 ### [IPv6入门教程](./docs/ipv6-intr.md)
 ### [多拨和负载均衡配置](./docs/xwan/)
 ### [基本网络配置指引](./docs/net-basic.md)
