@@ -11,7 +11,7 @@ $  vim  /etc/config/network
 ```
 在[lan](#)的[interface](#)添加配置项
 
-+ [ip6addr](#): 给接口配置一个ipv6地址
++ [ip6addr](#): 给接口配置一个ipv6地址:`2a02:768:7c00:14a:32b5:c2ff:feb9:c8f3/64`
 ```
 config interface 'lan'
     option type 'bridge'
@@ -26,7 +26,7 @@ config interface 'lan'
 ```
 $ vim /etc/config/dhcp
 ```
-+ [dhcpv6](#): 开启dhcpv6服务器模式
++ [dhcpv6](#): 开启dhcpv6服务器模式: `option dhcpv6 'server'`
 ```
 config dhcp 'lan'
         option interface 'lan'
