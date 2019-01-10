@@ -53,6 +53,12 @@ feeds/ptpt52/rom/lede/config.x86_generic
 ## 2. 配置目标
 在模版配置文件的基础上，执行`make menuconfig`命令进行个性化定制，增删应用。
 
+首先，在`Target Profile`菜单里面选择自己的目标设备，比如`Phicomm K2T`
+![](./build-target.png)
+
+然后，在定位到各个子菜单，选择对应的软件包
+![](./build-m.png)
+
 ## 3. 执行编译
 命令:
 ```sh
