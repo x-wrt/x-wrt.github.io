@@ -12,6 +12,14 @@
 ### [基本网络配置指引](https://blog.x-wrt.com/docs/net-basic.html)
 ### [在VPS上部署X-Wrt](https://blog.x-wrt.com/docs/install-on-vps/)
 
+## Contributing
+
+1. Fork it (any repositority on https://github.com/x-wrt)
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
 ## License
 
 See the [License File](./LICENSE.md).
