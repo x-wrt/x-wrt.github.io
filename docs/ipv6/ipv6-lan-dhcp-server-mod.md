@@ -1,11 +1,11 @@
-#X-wrt IPv6: dhcp简单配置(服务器模式)
+# X-wrt IPv6: dhcp简单配置(服务器模式)
 
-##1. 介绍
+## 1. 介绍
 LAN接口配置dhcpv6的服务, 网关给局域网的主机分配IPv6地址
 
-##2. 步骤
+## 2. 步骤
 
-###2.1 newtork配置
+### 2.1 newtork配置
 ```
 $  vim  /etc/config/network
 ```
@@ -22,7 +22,7 @@ config interface 'lan'
     option ip6addr '2a02:768:7c00:14a:32b5:c2ff:feb9:c8f3/64'
 ```
 
-###2.2 dhcp配置
+### 2.2 dhcp配置
 ```
 $ vim /etc/config/dhcp
 ```
@@ -39,13 +39,13 @@ config dhcp 'lan'
         option ra_default '1'
 ```
 
-###2.3 重启网络, dhcp服务器
+### 2.3 重启网络, dhcp服务器
 ```
 $ /etc/init.d/network  restart
 $ /etc/init.d/dnsmasq  restart
 ```
 
-##2.4 客户端重新获取IP
+## 2.4 客户端重新获取IP
 + 客户端可以看到接口获取到IPv6地址
 ```
 $ ifconfig
