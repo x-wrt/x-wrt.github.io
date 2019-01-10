@@ -70,3 +70,32 @@ make -j1 V=s
 ```
 
 生成的包在`bin/targets/`下面
+
+## 3. 高阶配置
+为了得到满意的固件，下面对编译配置选项做更多的详细说明，但是更多的可能并不局限于这些说明内容，还有更多期待大家自己探索。
+
+### 3.1 选择应用
+首先，进入`make menuconfig`菜单
+
+**要编译到固件里面，就要选择`<*>`，如果只选择`<M>`只是编译成软件包`ipk`，不会打包进入固件。**
+
+进入`LuCI - Applications`子菜单下面，选择自己想要的应用
+
+常见的软件包:
+```
+luci-app-aria2 ARRIA2下载工具
+luci-app-ddns DDNS工具
+luci-app-mwan3 MWAN3负载均衡
+luci-app-nft-qos 流量控制
+luci-app-openvpn OPENVPN
+luci-app-samba SAMBA网络共享
+luci-app-upnp UPNP设置
+luci-app-wireguard WireGuard配置界面
+```
+
+进入`Kernel modules - USB Support`菜单，选择USB支持的驱动
+
+进入`Kernel modules - Filesystems`菜单，选择需要支持的文件系统，比如`ext4,ntfs,vfat`等
+
+进入`Kernel modules - Wireless Drivers`菜单，选择无线支持的驱动，如果需要挂卡的驱动，也是在这里找
+
