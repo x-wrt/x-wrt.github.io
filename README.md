@@ -10,8 +10,8 @@
 ### [IPv6入门教程](./docs/ipv6-intr.md)
 ### [多拨和负载均衡配置](./docs/xwan/)
 ### [基本网络配置指引](./docs/net-basic.md)
-### [在VPS上部署X-Wrt](./docs/install-on-vps/)
-### [X-Wrt开启SSH登录](./docs/ssh-open/)
+### [在VPS上部署](./docs/install-on-vps/)
+### [开启SSH登录](./docs/ssh-open/)
 
 ## Contributing
 
