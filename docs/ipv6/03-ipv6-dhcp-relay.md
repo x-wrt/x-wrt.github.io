@@ -1,7 +1,7 @@
 # X-wrt IPv6: dhcp中继模式
 
 ## 1. 介绍
-    X-wrt可以通过中继的模式获取到原始的IPv6的IP
+X-wrt可以通过中继的模式获取到原始的IPv6的IP
 
 ## 2. 网络拓扑
 ![](./img/ipv6-dhcp-relay.png)
