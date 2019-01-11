@@ -15,6 +15,7 @@ include:
   - PULL_REQUEST_TEMPLATE.md
 
 theme: jekyll-theme-slate
+title: All about <font face="Arial Black" size="7">X</font><font size="6" face="Arial Black">-</font><font size="5" face="Arial Black">Wrt</font>
 name: Blog, News and Docs about X-Wrt
-description: All about <font face="Arial Black" size="7">X</font><font size="6" face="Arial Black">-</font><font size="5" face="Arial Black">Wrt</font> <a href="https://x-wrt.com/">https://x-wrt.com</a>
+description: <a href="https://x-wrt.com/">https://x-wrt.com</a>
 url: https://blog.x-wrt.com
