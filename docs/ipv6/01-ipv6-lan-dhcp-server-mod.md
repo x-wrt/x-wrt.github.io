@@ -26,7 +26,9 @@ config interface 'lan'
 ```
 $ vim /etc/config/dhcp
 ```
-+ [dhcpv6](#): 开启dhcpv6服务器模式: `option dhcpv6 'server'`
++ 开启dhcpv6服务器: 
+    `option dhcpv6 'server'`
+    `option ra 'server'`
 ```
 config dhcp 'lan'
         option interface 'lan'
