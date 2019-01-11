@@ -11,6 +11,7 @@
 ### [多拨和负载均衡配置](./docs/xwan/)
 ### [基本网络配置指引](./docs/net-basic.md)
 ### [在VPS上部署X-Wrt](./docs/install-on-vps/)
+### [X-Wrt开启SSH登录](./docs/ssh-open/)
 
 ## Contributing
 
