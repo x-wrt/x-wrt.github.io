@@ -17,5 +17,5 @@ include:
 theme: jekyll-theme-slate
 title: All about <font face="Arial Black" size="7">X</font><font size="6" face="Arial Black">-</font><font size="5" face="Arial Black">Wrt</font>
 name: Blog, News and Docs about X-Wrt
-description: <a href="https://x-wrt.com/">https://x-wrt.com</a>
+description: Home <a href="https://x-wrt.com/">https://x-wrt.com</a> Blog <a href="https://blog.x-wrt.com/">https://blog.x-wrt.com</a>
 url: https://blog.x-wrt.com
