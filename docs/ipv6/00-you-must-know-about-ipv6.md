@@ -53,7 +53,19 @@ ULA:  Unique Local Addresses, 这类地址是私有地址, 不能在IPv6互联�
 + [未指定地址](#)
   `::` 或 `0:0:0:0:0:0:0:0`, 类似IPv4的`127.0.0.1`
 
-#### 2.2.2 组播
-略
+#### 2.2.2 组播地址
+格式:
+![](./img/ipv6-mutilcast-address-format.png)
+![](./img/ipv6-mutilcast-address-flag-format.png)
+1. 固定前缀(8bits): `11111111`
+2. flag(4bits): 略 ([TODO](#))
+3. scop(4bits): 略 ([TODO](#))
+4. 组ID(112bits): 略 ([TODO](#))
 
+[参考 RFC4291](https://tools.ietf.org/html/rfc4291#section-2.7)
+
++
++
+
+## 3. IPv6 DHCP
 
