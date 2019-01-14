@@ -2,6 +2,8 @@
 
 ## 1. IPv6 基础
 + [IPv6 基础](./basic/00-you-must-know-about-ipv6.md)
++ [IPv6 邻居发现](./basic/01-ipv6-neighbor-discover.md)
++ [IPv6 地址分配](./basic/02-ipv6-address-assignment.md) 
 + [...](#)
   
 ## 2. x-wrt IPv6配置
@@ -10,3 +12,5 @@
 + [DHCP服务(中继模式)](./x-wrt/03-ipv6-dhcp-relay.md)
 + [IPv6 NAT模式(ip6tables)](./x-wrt/04-ipv6-nat.md)
 + [...]()
+
+
