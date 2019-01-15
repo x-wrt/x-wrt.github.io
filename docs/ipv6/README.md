@@ -12,6 +12,7 @@
 + [wan获取IPv6地址 (dhcpv6)](./x-wrt/02-ipv6-wan-dhcp.md)
 + [DHCP服务(中继模式)](./x-wrt/03-ipv6-dhcp-relay.md)
 + [IPv6 NAT模式(ip6tables)](./x-wrt/04-ipv6-nat.md)
++ [IPv6 PPPoe模式(ip6tables)](./x-wrt/05-ipv6-pppoe.md)
 + [...]()
 
 
