@@ -52,7 +52,7 @@ $ /etc/init.d/dnsmasq  restart
 ```
 $ ifconfig
 ```
-![](./img/PC-IPv6-IP.jpg)
+![](../img/PC-IPv6-IP.jpg)
 
 + ping网关的IPv6地址
 ```

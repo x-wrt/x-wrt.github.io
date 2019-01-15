@@ -27,6 +27,6 @@ $ /etc/init.d/network restart
 ```
 $ ifconfig
 ```
-![](./img/wan-ipv6-ip.png)
+![](../img/wan-ipv6-ip.png)
 
 

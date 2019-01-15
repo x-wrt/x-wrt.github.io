@@ -4,7 +4,7 @@
 X-wrt可以通过中继的模式获取到原始的IPv6的IP
 
 ## 2. 网络拓扑
-![](./img/ipv6-dhcp-relay.png)
+![](../img/ipv6-dhcp-relay.png)
 
 ## 3. 步骤
 
@@ -53,4 +53,4 @@ config dhcp 'wan'
 PC重新获取一下IP, 查看接口信息: IPv6地址是有[R2路由器](#)分配的
 `$ ifconfig`
 
-![](./img/PC-ipv6-dhcp-relay.jpg)
+![](../img/PC-ipv6-dhcp-relay.jpg)

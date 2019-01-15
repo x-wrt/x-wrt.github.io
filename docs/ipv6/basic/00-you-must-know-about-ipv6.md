@@ -16,7 +16,7 @@ IPv6地址一共128位(128 bits)
 + [全球单播地址](#) 
 相当于IPv4的公网IP地址, 在IPv6网络内可以全球路由, 作用域是[整个IPv6互联网](#)
 格式:
-![](./img/global-ipv6-unicast.png)
+![](../img/global-ipv6-unicast.png)
   1. 固定前缀 (3bits) :  `001`
   2. 全球路由前缀 (45bits) : 这些站点会分配给ISP
   3. 子网掩码 (16bits) : ISP会分配站点内的子网络
@@ -28,14 +28,14 @@ IPv6地址一共128位(128 bits)
 + [链路本地地址](#)
 用于单一链路内(没有路由器参与的链路)节点的通信, 类似IPv4的169.254.0.0/16(本地链路地址)
 格式:
-![](./img/local-link-ipv6-unicast.png)
+![](../img/local-link-ipv6-unicast.png)
 前缀: `FB80::/64`
 作用: ...
 
 + [唯一本地地址 (ULA)](#)
 ULA:  Unique Local Addresses, 这类地址是私有地址, 不能在IPv6互联网内路由的, 类似与IPv4的私网地址.用法上，ULA和IPv4的私有地址十分类似，但它具有近似的全局唯一性. 它的流量不会到达Internet去.<br>
 格式:
-![](./img/unique-local-address-format.png)
+![](../img/unique-local-address-format.png)
   1. prefix(前缀): 固定7bits, `FC00::/7`, 所有本地地址都是7位前缀.
   2. L(标签): 设置为`1`,表示这个地址是局部分配的地址. (`0` 还没有被定义)
   3. Global ID: 由网络独自随机选择，由于40bits的随机型保证唯一行的概率很大,部署时**不需要**向一个全球机构注册使用某个前缀
@@ -55,8 +55,8 @@ ULA:  Unique Local Addresses, 这类地址是私有地址, 不能在IPv6互联�
 
 #### 2.2.2 组播地址
 格式:
-![](./img/ipv6-mutilcast-address-format.png)
-![](./img/ipv6-mutilcast-address-flag-format.png)
+![](../img/ipv6-mutilcast-address-format.png)
+![](../img/ipv6-mutilcast-address-flag-format.png)
 1. 固定前缀(8bits): `11111111`
 2. flag(4bits): 略 ([TODO](#))
 3. scop(4bits): 略 ([TODO](#))
@@ -76,7 +76,7 @@ ULA:  Unique Local Addresses, 这类地址是私有地址, 不能在IPv6互联�
 [B节点](#)需要和[A节点](#)通信,那么[B节点](#)需要知道[A节点](#)的MAC地址, 所以[B节点](#)会向[A节点](#)发送邻居节点请求信息, A收到这个信息后会发送一个单播的邻居节点通告信息回应.<br>
 优点: 在MAC层地址解析时,不需要干扰所有的节点.
 
-#### 2.2.3 组播地址
+#### 2.2.3 任播地址
 略
 
 #### 2.2.4 主机IPv6地址
@@ -96,7 +96,7 @@ IPv6单播地址后`64`位用做接口ID, 在该地址的`64`位前缀的子网�
 
 ### 2.4 数据包结构
 IPv6数据包:
-![](./img/ipv6-packet-format.png)
+![](../img/ipv6-packet-format.png)
 1. IPv6头部: 固定`40字节`
 2. 头部扩展: 长度不定
  
