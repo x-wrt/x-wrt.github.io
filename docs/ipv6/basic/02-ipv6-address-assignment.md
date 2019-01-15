@@ -23,8 +23,7 @@ IPv6地址分配采用了自动配置和DHCP的方式, 使得IPv6地址配置容
 依赖于DHCPv6服务, 分为: 有状态IPv6和无状态IPv6, 依赖路由通告消息(RA)数据包的`M`和`O`状态位
 + [无状态DHCP(stateless)](#)
 标签O: `1`
-仅分配基本配置参数(), 接口ID还是自己生成的, 可以理解为SLAAC + DHCPv6, 使用SLAAC方式配置地址, DHCPv6获取其他配置. 这样的DHCP方式无需要管理IP租约lease, 所以成为无状态
-<br>
+仅分配基本配置参数(), 接口ID还是自己生成的, 可以理解为SLAAC + DHCPv6, 使用SLAAC方式配置地址, DHCPv6获取其他配置. 这样的DHCP方式无需要管理IP租约lease, 所以成为无状态<br>
 + [有状态DHCPv6(stateful)](#)
 类似IPv4的DHCP, 由路由器来分配IPv6地址和配置参数
 标签M: `1`
