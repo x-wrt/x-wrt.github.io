@@ -2,9 +2,9 @@
 
 ## 1. IPv6 基础
 + [IPv6 基础](./basic/00-you-must-know-about-ipv6.md)
-+ [ICMPv6 协议](.//basic/01-ipv6-icmpv6.md)
-+ [IPv6 邻居发现](./basic/02-ipv6-neighbor-discover.md)
-+ [IPv6 地址分配](./basic/03-ipv6-address-assignment.md) 
++ [ICMPv6 协议](./basic/01-ipv6-icmpv6.md)
++ [IPv6 地址分配](./basic/02-ipv6-address-assignment.md)
++ [IPv6 邻居发现](./basic/03-ipv6-neighbor-discover.md)
 + [...](#)
   
 ## 2. x-wrt IPv6配置

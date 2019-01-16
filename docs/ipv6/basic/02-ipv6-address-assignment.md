@@ -26,7 +26,7 @@ IPv6地址分配采用了自动配置和DHCP的方式, 使得IPv6地址配置容
 仅分配基本配置参数(), 接口ID还是自己生成的, 可以理解为SLAAC + DHCPv6, 使用SLAAC方式配置地址, DHCPv6获取其他配置. 这样的DHCP方式无需要管理IP租约lease, 所以成为无状态<br>
 + [有状态DHCPv6(stateful)](#)
 类似IPv4的DHCP, 由路由器来分配IPv6地址和配置参数
-标签M: `1`
+标签M: `1` 
 过程:
   1. 主机接入网络后发送路由请求消息(Router Solicitation);
   2. 路由器收到请求后,会发送路由通告消息(Router Advertisement), 状态位M设置为`1`
