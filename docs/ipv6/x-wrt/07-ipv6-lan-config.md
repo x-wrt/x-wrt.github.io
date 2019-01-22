@@ -1,7 +1,7 @@
 # X-wrt: IPv6 LAN服务配置
 
 ## 1.介绍
-LAN接口可以采用SLAAC, DHCPv6(无状态), DHCPv6(无状态)三种方式给客户端分配地址
+LAN接口可以采用SLAAC, DHCPv6(无状态), DHCPv6(无状态)三种方式给客户端分配地址, 以及指定dns服务器
 
 ## 2 配置项
 ```
@@ -27,7 +27,7 @@ ra_default:
       2: ignore all
 ```
 ## 3. SLAAC(无状态地址自动配置)
-修改配置文件`/etc/config/dhcp`<br>
+配置文件`/etc/config/dhcp`<br>
 ```
 config dhcp lan
     option dhcpv6        disabled  # dhcpv6服务
@@ -35,7 +35,7 @@ config dhcp lan
     option ra_management 0         # M=0 & A=1
 ```
 ## 4. DHCPv6(无状态)
-修改配置文件`/etc/config/dhcp`<br>
+配置文件`/etc/config/dhcp`<br>
 ```
 config dhcp lan
     option dhcpv6 server
@@ -43,7 +43,7 @@ config dhcp lan
     option ra_management 1   # M=1 & A=1
 ```
 ## 5. DHCPv6(有状态)
-修改配置文件`/etc/config/dhcp`<br>
+配置文件`/etc/config/dhcp`<br>
 ```
 config dhcp lan
     option dhcpv6 server     # 开启dhcpv6服务
@@ -51,6 +51,7 @@ config dhcp lan
     option ra_management 2   # M=1 & A=0
 ```
 ## 6. IPv6中继模式(不会影响IPv4地址获取)
+配置文件`/etc/config/dhcp`<br>
 ```
 config dhcp wan
     option dhcpv6 relay
@@ -63,3 +64,14 @@ config dhcp lan
     option ra relay
     option ndp relay
 ```
+
+## 7. 指定DNS服务器
+配置文件`/etc/config/dhcp`<br>
+```
+config dhcp lan
+    ...
+    list dns 2001::1
+    list dns 2001::2
+    ...
+```
+
