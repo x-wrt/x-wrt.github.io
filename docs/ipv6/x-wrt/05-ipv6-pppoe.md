@@ -2,4 +2,9 @@
 
 ## 1. 介绍
 
-## 2. PPPoe
+## 2. PPPoe + IPv6
++ 打开`/etc/config/network`
+
+```
+
+```
