@@ -11,10 +11,10 @@
 
   
 ## 2. IPv6配置
-+ [WAN 配置](./x-wrt/06-ipv6-wan-config.md)
++ [WAN 配置](./configure/01-ipv6-wan-config.md)
 
-+ [LAN 配置](./x-wrt/07-ipv6-lan-config.md) 
++ [LAN 配置](./configure/02-ipv6-lan-config.md) 
 
-+ [NAT 配置](./x-wrt/08-ipv-nat.md)
++ [IPv6连接互联网](./configure/03-ipv6-connect-to-internet.md)
 
 ## 3. [FAQ](./FAQ.md)

@@ -38,8 +38,8 @@ config dhcp lan
 配置文件`/etc/config/dhcp`<br>
 ```
 config dhcp lan
-    option dhcpv6 server
-    option ra     server
+    option dhcpv6        server
+    option ra            server
     option ra_management 1   # M=1 & A=1
 ```
 ## 5. DHCPv6(有状态)
