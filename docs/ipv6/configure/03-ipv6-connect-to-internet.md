@@ -44,18 +44,32 @@ PC可以获取到lan口分配的IP, 然后访问外网的IPv6地址, 那么在IS
 ### 3.1 网络拓扑
 ![](../img/ipv6-delay-topology.png)
 ### 3.2 配置
++ network
+```
+config interface 'lan'
+	option type 'bridge'
+	option ifname 'eth0.1'
+	option proto 'static'
+	option ipaddr '192.168.15.1'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+
+config interface 'wan'
+	option ifname 'eth0.2'
+	option proto 'dhcp'
+```
 + dhcp
 ```
+config dhcp lan
+    option dhcpv6 relay
+    option ra relay
+    option ndp relay
+
 config dhcp wan
     option dhcpv6 relay
     option ra relay
     option ndp relay
     option master 1
-
-config dhcp lan
-    option dhcpv6 relay
-    option ra relay
-    option ndp relay
 ```
 ### 3.4 结果
 PC可以获取ISP分配的IPv6地址(如果ISP支持DHCPv6), 而且PC还是可以获取到X-wrt分配的IPv4地址
