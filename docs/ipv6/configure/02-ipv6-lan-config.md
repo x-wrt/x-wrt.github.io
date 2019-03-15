@@ -14,6 +14,11 @@ ra_management:
       0: M标记 = 0 且 A标记 = 1
       1: M标记 = 1 且 A标记 = 1
       2: M标记 = 1 且 A标记 = 0
+
+!!!这里存在有一个问题:
+如果选中ra_management=1时, lan下面的客户端可以同时
+获取到路由器分配的IPv6地址和自己生成的IPv6地址!
+这里
 ```
 
 ```
@@ -41,6 +46,7 @@ config dhcp lan
     option dhcpv6        server
     option ra            server
     option ra_management 1   # M=1 & A=1
+    option ra_default 1
 ```
 ## 5. DHCPv6(有状态)
 配置文件`/etc/config/dhcp`<br>
@@ -49,20 +55,23 @@ config dhcp lan
     option dhcpv6 server     # 开启dhcpv6服务
     option ra     server     # 关闭RA服务器
     option ra_management 2   # M=1 & A=0
+    option ra_default 1
 ```
 ## 6. IPv6中继模式(不会影响IPv4地址获取)
 配置文件`/etc/config/dhcp`<br>
 ```
 config dhcp wan
-    option dhcpv6 relay
-    option ra relay
-    option ndp relay
-    option master 1
+    option interface 'wan'#和network配置wan的interface名称一致
+    option dhcpv6 'relay'
+    option ra 'relay'
+    option ndp 'relay'
+    option master '1'
 
 config dhcp lan
-    option dhcpv6 relay
-    option ra relay
-    option ndp relay
+    option interface 'lan' #和network配置lan的interface名称一致
+    option dhcpv6 'relay'
+    option ra 'relay
+    option ndp 'relay'
 ```
 
 ## 7. 指定DNS服务器
