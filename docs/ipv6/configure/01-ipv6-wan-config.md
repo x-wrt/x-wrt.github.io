@@ -10,10 +10,18 @@ config interface 'wan'
     option proto     'static'
     option ip6addr   2001:1234:5678:1::2/64 #给自己配置的地址
     option ip6gw     2001:1234:5678:1::1    #默认网关
-    option ip6prefix 2001:db80:1::/48       #前缀, 可以用于给下游接口分配
     option dns       2001:db80::1           #dns服务器
 ```
-
+```
+也可以和IPv4在同一个interface, 如:
+config interface 'wan'
+    option ifname    'eth0.2'
+    option proto     'static'
+    option ipaddr    '192.168.0.123/24'
+    option ip6addr   2001:1234:5678:1::2/64
+    option ip6gw     2001:1234:5678:1::1
+    option dns       2001:db80::1
+```
 ### 2.2 重启网络
 `$ /etc/init.d/network restart`
 
