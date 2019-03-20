@@ -10,6 +10,7 @@ ICMPv6 分为消息型消息和错误型消息.
 + 内容(body)
 
 ### 2.2 ICMPv6类型
+
 |Type|功能|说明|
 |---|---|---|
 |1|目的不可达||
@@ -18,27 +19,27 @@ ICMPv6 分为消息型消息和错误型消息.
 |4|参数问题|通知源地址，在处理 IPv6 报头或 IPv6 扩展报头时发生错误|
 |128|回显请求|用来检查IPv6节点是否可达到, ping命令使用该类型数据包|
 |129|回显应答|用来响应"回显请求"(Type=128), ping命令使用该类型数据包|
-|130|Multicast Listener Query|
-|131|Multicast Listener Report|
-|132|Multicast Listener Done|
+|130|Multicast Listener Query||
+|131|Multicast Listener Report||
+|132|Multicast Listener Done||
 |133|[Router Solicitation](#)|主机向路由器发送路由器请求消息|
 |134|[Router Advertisement](#)|路由器发送[路由通告消息](#)|
-|135|Neighbor Solicitation|
-|136|Neighbor Advertisement|
-|137|Redirect Message|
-|138|Router Renumbering|
-|139|ICMP Node Information Query|
-|140|ICMP Node Information Response|
-|141|Inverse Neighbor Discovery|
-|142|Inverse Neighbor Discovery|
-|144|Home Agent Address Discovery|
-|145|Home Agent Address Discovery|
-|146|Mobile Prefix Solicitation|
-|147|Mobile Prefix Advertisement|
-|157|Duplicate Address Request Code Suffix|
-|158|Duplicate Address Confirmation Code Suffix|
-|160|Extended Echo Request|
-|161|Extended Echo Reply|
+|135|Neighbor Solicitation||
+|136|Neighbor Advertisement||
+|137|Redirect Message||
+|138|Router Renumbering||
+|139|ICMP Node Information Query||
+|140|ICMP Node Information Response||
+|141|Inverse Neighbor Discovery||
+|142|Inverse Neighbor Discovery||
+|144|Home Agent Address Discovery||
+|145|Home Agent Address Discovery||
+|146|Mobile Prefix Solicitation||
+|147|Mobile Prefix Advertisement||
+|157|Duplicate Address Request Code Suffix||
+|158|Duplicate Address Confirmation Code Suffix||
+|160|Extended Echo Request||
+|161|Extended Echo Reply||
 
 ### 2. 路由请求和路由通告
 #### 2.1 路由请求
