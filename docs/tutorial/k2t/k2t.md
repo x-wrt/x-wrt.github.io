@@ -1,4 +1,4 @@
-##激活 Telnet
+## 激活 Telnet
 
 固件 22.23.1.158 及以后出的版本, 将不支持激活。非官方原版固件因为删减的原因, 可能不支持。
 
@@ -11,16 +11,16 @@
 
 参考: http://www.right.com.cn/forum/thread-321483-16-1.html
 
-##Windows 10 上开启 Telnet 功能
+## Windows 10 上开启 Telnet 功能
 * Press Windows Key + S on your keyboard and enter features. Select Turn Windows Features on or off.
 * When Windows Features opens, scroll down and check Telnet Client. Click OK to install Telnet.
 * Wait until Windows installs the necessary components.
 * Once the installation is completed click the Close button.
 
-##可选：刷入breed
+## 可选：刷入breed
 参考：http://www.right.com.cn/forum/thread-322551-1-1.html
 
-##刷机
+## 刷机
 连接路由器：
 * 如果是第一次刷固件，则是 cmd ：<code>telnet 192.168.2.1</code>
 * 如果是更新固件，需要先开启 SSH，然后 bash：<code>ssh  root@192.168.2.1</code>
