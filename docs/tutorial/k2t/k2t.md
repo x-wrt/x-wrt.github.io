@@ -12,7 +12,13 @@
 参考: http://www.right.com.cn/forum/thread-321483-16-1.html
 
 ## Windows 10 上开启 Telnet 功能
-* Press Windows Key + S on your keyboard and enter features. Select Turn Windows Features on or off.
+* 点击开始按钮，搜索“启用或关闭 Windows 功能”，点击第一个结果。
+* 下拉找到“Telnet Client”，勾选并点击确定。
+* 等一会儿就可以安装好了，点“关闭”即可。
+
+English version: Enable Telnet Client on Windows 10
+
+* Press Start button, type "Turn Windows Features on or off" and open the first setting.
 * When Windows Features opens, scroll down and check Telnet Client. Click OK to install Telnet.
 * Wait until Windows installs the necessary components.
 * Once the installation is completed click the Close button.
