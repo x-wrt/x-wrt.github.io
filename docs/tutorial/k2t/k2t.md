@@ -28,10 +28,15 @@ English version: Enable Telnet Client on Windows 10
 
 ## 刷机
 连接路由器：
-* 如果是第一次刷固件，则是 cmd ：<code>telnet 192.168.2.1</code>
-* 如果是更新固件，需要先开启 SSH，然后 bash：<code>ssh  root@192.168.2.1</code>
+* 如果是第一次刷固件，则是 cmd 执行：
 
-执行以下命令：
+```telnet 192.168.2.1```
+
+* 如果是更新固件，需要先开启 SSH，然后 bash 执行：
+
+```ssh root@192.168.2.1```
+
+执行以下命令刷机：
 
 ```sh
 cd /tmp
