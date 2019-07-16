@@ -12,6 +12,7 @@
 ### [基本网络配置指引](./docs/net-basic/)
 ### [在VPS上部署](./docs/install-on-vps/)
 ### [开启SSH登录](./docs/ssh-open/)
+### [刷机教程汇总](./docs/tutorial/)
 
 ## Contributing
 
