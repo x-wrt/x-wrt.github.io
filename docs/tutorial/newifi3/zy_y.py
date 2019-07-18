@@ -48,15 +48,23 @@ def shizuku ():
             shizuku()
     # ssh.connect(hostname="127.0.0.1",username="shizuku",password="shizuku")
     print(), print("路由器连接成功")
-    stdin, stdout, stderr = ssh.exec_command("wget https://gitee.com/zy143l/OpenWRT/raw/master/zy")
-    result = stdout.read()
     stdin, stdout, stderr = ssh.exec_command("wget https://gitee.com/zy143l/OpenWRT/raw/master/shizuku.ko")
     result = stdout.read()
-    stdin, stdout, stderr = ssh.exec_command("sh zy")
-    result = stdout.read()
-    # ssh.exec_command("wget https://gitee.com/zy143l/OpenWRT/raw/master/zy")
-    # ssh.exec_command("wget https://gitee.com/zy143l/OpenWRT/raw/master/shizuku.ko")
-    # ssh.exec_command("sh zy")
+    print(stdout.read(), stderr.read())
+    stdin, stdout, stderr = ssh.exec_command("md5sum shizuku.ko | awk '{print $1}'")
+    ko_md5sum = stdout.read()
+    print(ko_md5sum, stderr.read())
+    if (b'733b6977ee83b529b733df199b7cd2fe\n' != ko_md5sum):
+        print("请尝试切换到 https://raw.githubusercontent.com/chinapedia/OpenWRT/master/shizuku.ko")
+        exit(1)
+    stdin, stdout, stderr = ssh.exec_command("Z_eeprom=`cat /proc/mtd | grep Factory | cut -b 1-4` && echo ${Z_eeprom}")
+    print(stdout.read(), stderr.read())
+    cmd = 'Z_eeprom=`cat /proc/mtd | grep Factory | cut -b 1-4` && dd if=/dev/${Z_eeprom} of=/tmp/eeprom.bin'
+    stdin, stdout, stderr = ssh.exec_command(cmd)
+    print(cmd, ":", stdout.read(), stderr.read())
+    stdin, stdout, stderr = ssh.exec_command('ln -s /tmp/eeprom.bin /www/eeprom.bin')
+    print(stdout.read(), stderr.read())
+
     print()
     print("EEPROM备份成功 开始下载")
     urllib.request.urlretrieve(eeprom, down)
@@ -73,15 +81,6 @@ def shizuku ():
     print("CopyRight By Zy143L")
     time.sleep(5)
     exit()
-
-    # stdin,stdout,stderr = ssh.exec_command("wget -P /tmp https://gitee.com/zy143l/OpenWRT/raw/master/shizuku.ko")
-    # result = stdout.read()
-    # if not result:
-    # result = stderr.read()
-
-    # print(result.decode())
-    #return
-
 
 if code == 404:
     time.sleep(1)
