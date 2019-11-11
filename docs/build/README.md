@@ -20,6 +20,7 @@ git fetch origin
 
 #列出可以使用的版本tag:
 git tag
+#注意摁 q 键结束
 
 #选择并切换到指定的版本tag:
 git checkout -f <tag-name>
