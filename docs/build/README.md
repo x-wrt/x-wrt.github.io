@@ -14,6 +14,19 @@ sudo apt-get install build-essential flex gawk gettext git-core libncurses5-dev 
 ```sh
 git clone https://github.com/x-wrt/x-wrt.git
 cd x-wrt
+
+#更新代码tag:
+git fetch origin
+
+#列出可以使用的版本tag:
+git tag
+
+#选择并切换到指定的版本tag:
+git checkout -f <tag-name>
+#比如
+git checkout -f 6.0_b201911100154
+
+#更新代码:
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 ```
