@@ -35,6 +35,7 @@ git checkout -f 6.0_b201911100154
 配置固件的命令`make menuconfig` 但是我们可以从配置模版开始会更轻松一些。
 
 比如ar71xx-generic的设备可以用拷贝这个模版`feeds/x/rom/lede/config.ar71xx-generic`
+内核分区限制小的设备，选用 `-nosymbol` 结尾的`config`配置模版
 ```sh
 cp feeds/x/rom/lede/config.ar71xx-generic .config
 ```
@@ -48,7 +49,11 @@ feeds/x/rom/lede/config.ar71xx-nand-nosymbol
 feeds/x/rom/lede/config.ar71xx-tiny
 feeds/x/rom/lede/config.ath79-generic
 feeds/x/rom/lede/config.ath79-generic-nosymbol
+feeds/x/rom/lede/config.ath79-nand
 feeds/x/rom/lede/config.bcm53xx-generic
+feeds/x/rom/lede/config.brcm2708-bcm2709
+feeds/x/rom/lede/config.brcm2708-bcm2710
+feeds/x/rom/lede/config.brcm2708-bcm2711
 feeds/x/rom/lede/config.ipq40xx-generic
 feeds/x/rom/lede/config.ipq806x-generic
 feeds/x/rom/lede/config.kirkwood-generic
@@ -58,6 +63,7 @@ feeds/x/rom/lede/config.ramips-mt7620-nosymbol
 feeds/x/rom/lede/config.ramips-mt7621
 feeds/x/rom/lede/config.ramips-mt76x8
 feeds/x/rom/lede/config.ramips-mt76x8-nosymbol
+feeds/x/rom/lede/config.ramips-rt305x
 feeds/x/rom/lede/config.ramips-rt3883-nosymbol
 feeds/x/rom/lede/config.sunxi-cortexa7
 feeds/x/rom/lede/config.x86_64
