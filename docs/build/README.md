@@ -7,7 +7,7 @@
 
 首先要安装编译所需要的软件包:
 ```sh
-sudo apt-get install build-essential flex gawk gettext git-core libncurses5-dev libssl-dev subversion unzip zlib1g-dev
+sudo apt install build-essential ecj fastjar file flex g++ gawk gettext git git-core java-propose-classpath libelf-dev libncurses5-dev libncursesw5-dev libssl-dev python python3 subversion unzip wget zlib1g-dev
 ```
 
 下载源码:
