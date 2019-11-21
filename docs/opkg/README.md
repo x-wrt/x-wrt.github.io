@@ -15,7 +15,7 @@ sed -i 's/http:/https:/g' /etc/opkg/distfeeds.conf
 opkg --no-check-certificate update
 
 #列出软件包
-opkg --no-check-certificate list
+opkg list
 
 #安装
 opkg --no-check-certificate install luci-app-shadowsocks-libev
