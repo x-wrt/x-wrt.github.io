@@ -21,6 +21,8 @@ git fetch origin
 #列出可以使用的版本tag:
 git tag
 #注意摁 q 键结束
+#或者直接获取最新发布版本
+git describe --tags $(git rev-list --tags --max-count=1)
 
 #选择并切换到指定的版本tag:
 git checkout -f <tag-name>
