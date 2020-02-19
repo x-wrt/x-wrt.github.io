@@ -48,7 +48,7 @@ def shizuku ():
             shizuku()
     # ssh.connect(hostname="127.0.0.1",username="shizuku",password="shizuku")
     print(), print("路由器连接成功")
-    stdin, stdout, stderr = ssh.exec_command("wget https://gitee.com/zy143l/OpenWRT/raw/master/shizuku.ko")
+    stdin, stdout, stderr = ssh.exec_command("wget --no-check-certificate https://gitee.com/zy143l/OpenWRT/raw/master/shizuku.ko")
     result = stdout.read()
     print(stdout.read(), stderr.read())
     stdin, stdout, stderr = ssh.exec_command("md5sum shizuku.ko | awk '{print $1}'")
