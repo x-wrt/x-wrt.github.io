@@ -7,7 +7,7 @@
 
 首先要安装编译所需要的软件包:
 ```sh
-sudo apt install build-essential ecj fastjar file flex g++ gawk gettext git git-core java-propose-classpath libelf-dev libncurses5-dev libncursesw5-dev libssl-dev python python3 subversion unzip wget zlib1g-dev
+sudo apt install build-essential ecj fastjar file flex g++ gcc-multilib g++-multilib gawk gettext git git-core java-propose-classpath libelf-dev libncurses5-dev libncursesw5-dev libssl-dev python python3 subversion unzip wget zlib1g-dev
 ```
 
 下载源码:
@@ -26,8 +26,8 @@ git describe --tags $(git rev-list --tags --max-count=1)
 
 #选择并切换到指定的版本tag:
 git checkout -f <tag-name>
-#比如
-git checkout -f 6.0_b201911100154
+#example
+git checkout -f 9.0_b202103210628
 
 #更新代码:
 ./scripts/feeds update -a
@@ -44,21 +44,18 @@ cp feeds/x/rom/lede/config.ar71xx-generic .config
 
 还有更多配置模版，请参考目录下的`config.*`文件:
 ```
-feeds/x/rom/lede/config.ar71xx-generic
-feeds/x/rom/lede/config.ar71xx-generic-nosymbol
-feeds/x/rom/lede/config.ar71xx-nand
-feeds/x/rom/lede/config.ar71xx-nand-nosymbol
-feeds/x/rom/lede/config.ar71xx-tiny
 feeds/x/rom/lede/config.ath79-generic
 feeds/x/rom/lede/config.ath79-generic-nosymbol
 feeds/x/rom/lede/config.ath79-nand
+feeds/x/rom/lede/config.bcm27xx-bcm2709
+feeds/x/rom/lede/config.bcm27xx-bcm2710
+feeds/x/rom/lede/config.bcm27xx-bcm2711
 feeds/x/rom/lede/config.bcm53xx-generic
-feeds/x/rom/lede/config.brcm2708-bcm2709
-feeds/x/rom/lede/config.brcm2708-bcm2710
-feeds/x/rom/lede/config.brcm2708-bcm2711
 feeds/x/rom/lede/config.ipq40xx-generic
 feeds/x/rom/lede/config.ipq806x-generic
 feeds/x/rom/lede/config.kirkwood-generic
+feeds/x/rom/lede/config.mediatek-mt7622
+feeds/x/rom/lede/config.mvebu-cortexa53
 feeds/x/rom/lede/config.mvebu-cortexa9
 feeds/x/rom/lede/config.ramips-mt7620
 feeds/x/rom/lede/config.ramips-mt7620-nosymbol
@@ -67,8 +64,10 @@ feeds/x/rom/lede/config.ramips-mt76x8
 feeds/x/rom/lede/config.ramips-mt76x8-nosymbol
 feeds/x/rom/lede/config.ramips-rt305x
 feeds/x/rom/lede/config.ramips-rt3883-nosymbol
+feeds/x/rom/lede/config.rockchip-armv8
 feeds/x/rom/lede/config.sunxi-cortexa7
 feeds/x/rom/lede/config.x86_64
+feeds/x/rom/lede/config.x86_64-docker
 feeds/x/rom/lede/config.x86_generic
 ```
 
