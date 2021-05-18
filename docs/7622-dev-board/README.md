@@ -27,3 +27,32 @@ export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 改成
 export PATH="/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin"
 ```
+
+3. 安装greengrass
+
+```
+wget --no-check-certificate https://d2s8p88vqu9w66.cloudfront.net/releases/greengrass-nucleus-latest.zip -O greengrass-nucleus-latest.zip
+
+unzip greengrass-nucleus-latest.zip -d MyGreengrassCore
+
+export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+java -Droot="/greengrass/v2" -Dlog.store=FILE \
+  -jar ./MyGreengrassCore/lib/Greengrass.jar \
+  --aws-region region \
+  --thing-name MyGreengrassCore \
+  --thing-group-name MyGreengrassCoreGroup \
+  --tes-role-name GreengrassV2TokenExchangeRole \
+  --tes-role-alias-name GreengrassCoreTokenExchangeRoleAlias \
+  --component-default-user root:root \
+  --provision true \
+  --setup-system-service true \
+  --deploy-dev-tools true
+```
+
+4. 运行greengrass核心服务
+```
+/greengrass/v2/alts/current/distro/bin/loader
+```
+如果需要开机启动，按照Openwrt规范写启动脚本，开机运行 (待定)
