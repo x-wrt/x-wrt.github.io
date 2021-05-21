@@ -95,3 +95,18 @@ OpenJDK 64-Bit Server VM (build 11.0.11+9-Ubuntu-0ubuntu2.20.04, mixed mode)
 Python 3.8.5
 (focal)root@X-WRT:~#
 ```
+
+
+## 关于 amazon-kinesis-video-streams-producer-sdk-cpp 的编译
+
+无需编译它的依赖库，因为Ubuntu运行环境已经有了，所以我们编译的时候:
+
+```
+mkdir -p amazon-kinesis-video-streams-producer-sdk-cpp/build
+cd amazon-kinesis-video-streams-producer-sdk-cpp/build
+
+cmake .. -DBUILD_GSTREAMER_PLUGIN=ON -DBUILD_DEPENDENCIES=OFF
+
+make
+```
+更多细节请参考 https://github.com/awslabs/amazon-kinesis-video-streams-producer-sdk-cpp
