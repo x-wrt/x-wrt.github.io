@@ -77,3 +77,21 @@ mkswap /mnt/sda1/swapfile
 ```
 swapon /mnt/sda1/swapfile
 ```
+
+### 最终效果
+```
+(focal)root@X-WRT:~#
+(focal)root@X-WRT:~# lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 20.04.2 LTS
+Release:        20.04
+Codename:       focal
+(focal)root@X-WRT:~# java --version
+openjdk 11.0.11 2021-04-20
+OpenJDK Runtime Environment (build 11.0.11+9-Ubuntu-0ubuntu2.20.04)
+OpenJDK 64-Bit Server VM (build 11.0.11+9-Ubuntu-0ubuntu2.20.04, mixed mode)
+(focal)root@X-WRT:~# python3 --version
+Python 3.8.5
+(focal)root@X-WRT:~#
+```
