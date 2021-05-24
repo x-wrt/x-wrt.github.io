@@ -109,4 +109,4 @@ cmake .. -DBUILD_GSTREAMER_PLUGIN=ON -DBUILD_DEPENDENCIES=OFF
 
 make
 ```
-更多细节请参考 https://github.com/awslabs/amazon-kinesis-video-streams-producer-sdk-cpp
+更多细节请参考: https://github.com/awslabs/amazon-kinesis-video-streams-producer-sdk-cpp
