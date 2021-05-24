@@ -54,14 +54,6 @@ tar xvzf schroot-ubuntu-focal.tgz
 
 解压后得到 `/mnt/sda1/schroot/ubuntu`
 
-4. schroot 环境运行
-```
-schroot -l # 列出可以用的schroot环境
-schroot -c focal # 切换到 ubuntu focal 的chroot环境
-```
-
-后面使用过程，就是 `schroot -c focal` 命令，切换到Ubuntu的chroot环境了，用起来跟Ubuntu基本无差异
-
 
 ## 创建 swapfile 交换内存
 因为目前这个设备内存太小，不适合后面的编译工作，需要swap内存辅助
@@ -77,6 +69,15 @@ mkswap /mnt/sda1/swapfile
 ```
 swapon /mnt/sda1/swapfile
 ```
+
+## schroot 环境运行
+```
+schroot -l # 列出可以用的schroot环境
+schroot -c focal # 切换到 ubuntu focal 的chroot环境
+```
+
+后面使用过程，就是 `schroot -c focal` 命令，切换到Ubuntu的chroot环境了，用起来跟Ubuntu基本无差异
+
 
 ### 最终效果
 ```
