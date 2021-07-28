@@ -36,10 +36,35 @@ git checkout -f 9.0_b202103210628
 
 配置固件的命令`make menuconfig` 但是我们可以从配置模版开始会更轻松一些。
 
-比如ar71xx-generic的设备可以用拷贝这个模版`feeds/x/rom/lede/config.ar71xx-generic`
+比如ramips-mt7621的设备可以用拷贝这个模版`feeds/x/rom/lede/config.ramips-mt7621`
 内核分区限制小的设备，选用 `-nosymbol` 结尾的`config`配置模版
 ```sh
-cp feeds/x/rom/lede/config.ar71xx-generic .config
+cp feeds/x/rom/lede/config.ramips-mt7621 .config
+```
+
+由于这些模版是用来编译大量设备的，copy过来后，可以直接编译，不做任何改变。
+但是如果需要改变，需要`make menuconfig`自定义，就要做下面的操作:
+```sh
+# 上面已经cp 拷贝了模版配置到 .config
+# 例如 cp feeds/x/rom/lede/config.ramips-mt7621 .config
+# 下面继续操作和修改
+
+#1 执行
+make menuconfig
+
+#2 进入 Target Profile 选择需要编译打包的设备型号，选择型号后立刻退出，保存
+```
+
+![](./build-target.png)
+
+```sh
+#3 执行下面的命令修复 .config
+sh feeds/x/rom/lede/fix-config.sh
+
+#4 再次执行 make menuconfig 然后立刻退出保存
+
+#5 最后一次 执行 make menuconfig 自定义选择你需要的软件包
+
 ```
 
 还有更多配置模版，请参考目录下的`config.*`文件:
@@ -50,6 +75,7 @@ feeds/x/rom/lede/config.ath79-nand
 feeds/x/rom/lede/config.bcm27xx-bcm2709
 feeds/x/rom/lede/config.bcm27xx-bcm2710
 feeds/x/rom/lede/config.bcm27xx-bcm2711
+feeds/x/rom/lede/config.bcm4908-generic
 feeds/x/rom/lede/config.bcm53xx-generic
 feeds/x/rom/lede/config.ipq40xx-generic
 feeds/x/rom/lede/config.ipq806x-generic
@@ -72,12 +98,9 @@ feeds/x/rom/lede/config.x86_generic
 ```
 
 ## 2. 配置目标
-在模版配置文件的基础上，执行`make menuconfig`命令进行个性化定制，增删应用。
+在上述准备好的模版配置文件的基础上，执行`make menuconfig`命令进行个性化定制，增删应用。
 
-首先，在菜单`Target Profile`里面选择自己的目标设备，比如`Phicomm K2T`
-![](./build-target.png)
-
-然后，再定位到各个子菜单，选择对应的软件包
+定位到各个子菜单，选择对应的软件包
 ![](./build-m.png)
 
 ## 3. 执行编译
@@ -91,6 +114,10 @@ make -j1 V=s
 ```
 
 生成的包在`bin/targets/`下面
+
+
+如果需要再次修改配置编译，只要不是换设备，都可以直接 `make menuconfig` 修改后就编译，如果需要修改设备，请从拷贝模版配置的地方重新开始配置。
+
 
 ## 3. 高阶配置
 为了得到满意的固件，下面对编译配置选项做更多的详细说明，但是更多的可能并不局限于这些说明内容，还有更多期待大家自己探索。
