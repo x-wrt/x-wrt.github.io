@@ -26,8 +26,10 @@ git describe --tags $(git rev-list --tags --max-count=1)
 
 #选择并切换到指定的版本tag:
 git checkout -f <tag-name>
-#example
-git checkout -f 9.0_b202103210628
+#例如
+git checkout -f 21.10_b202112032317
+#或者
+git checkout -f $(git describe --tags $(git rev-list --tags --max-count=1))
 
 #更新代码:
 ./scripts/feeds update -a
