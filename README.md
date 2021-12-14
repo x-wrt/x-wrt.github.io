@@ -15,6 +15,7 @@
 ### [开启SSH登录](./docs/ssh-open/)
 ### [刷机教程汇总](./docs/tutorial/)
 ### [安装软件包](./docs/opkg/)
+### [USB功能解析](./docs/USB/)
 
 ## Contributing
 
