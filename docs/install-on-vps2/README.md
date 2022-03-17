@@ -55,20 +55,28 @@ cp x-wrt-x86-64-generic-initramfs-kernel.bin /boot/vmlinuz-4.15.0-111-generic
 cp x-wrt-x86-64-generic-ext4-combined.img.gz /x-wrt.img.gz
 ```
 同时我们还需要一个安装脚本，脚本路径和固件保存的目录相同，这个例子是`/` 脚本名字是 `x-wrt-install-vps.sh` 脚本的代码参考如下:
+(根据情况修改)
 ```
 #!/bin/sh
 
+# install to sda
 BDEV=sda
+
+# x-wrt.img.gz in disk part sda2
+DDEV=sda2
+
 # static ip
 #network=172.21.170.245,255.255.240.0,172.21.175.253,8.8.8.8
+
 # static ip swap eth0 eth1
 #network="117.18.13.159,255.255.255.0,117.18.13.1,8.8.8.8,initscript=dWNpIHNldCBuZXR3b3JrLmxhbi5pZm5hbWU9ZXRoMQp1Y2kgc2V0IG5ldHdvcmsud2FuLmlmbmFtZT1ldGgwCnVjaSBjb21taXQgbmV0d29yawo="
+
 # dhcp ip
 network=dhcp
 
 vmroot=/tmp/block
 mkdir -p $vmroot
-mount /dev/${BDEV}1 $vmroot || exit 0
+mount /dev/${DDEV} $vmroot || exit 0
 cp $vmroot/x-wrt.img.gz /tmp/x-wrt.img.gz && {
 	cd /
 	umount $vmroot
