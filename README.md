@@ -7,7 +7,6 @@
 ## 教程
 
 ### [编译教程](./docs/build/)
-### [IPv6入门教程](./docs/ipv6)
 ### [多拨和负载均衡配置](./docs/xwan/)
 ### [基本网络配置指引](./docs/net-basic/)
 ### [在VPS上部署(旧)](./docs/install-on-vps/)
@@ -16,6 +15,7 @@
 ### [刷机教程汇总](./docs/tutorial/)
 ### [安装软件包](./docs/opkg/)
 ### [USB功能解析](./docs/USB/)
+### [设备远程管理界面使用](https://x-wrt.dev/)
 
 ## Contributing
 
