@@ -152,7 +152,7 @@ luci-app-natcap 远程界面管理模块和全锥形nat实现模块
 这个是远程界面管理(http://x-wrt.dev/) 模块和全锥形nat实现模块，鉴于有些朋友不喜欢被远程管理，这里说明下，请自行选择是否需要这个模块。删除后就删除了这个功能包括全锥形nat功能，抱歉这个暂时是耦合的暂时无法分开。
 
 编译选择不集成这个模块，可以:
-```
+```sh
 # 修改.config文件，删去掉这几个模块
 CONFIG_PACKAGE_luci-app-natcap=y
 CONFIG_PACKAGE_natcapd-client=y
