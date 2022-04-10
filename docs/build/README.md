@@ -134,12 +134,12 @@ make -j1 V=s
 luci-app-aria2 ARRIA2下载工具
 luci-app-ddns DDNS工具
 luci-app-mwan3 MWAN3负载均衡
-luci-app-nft-qos 流量控制
 luci-app-openvpn OPENVPN
 luci-app-samba SAMBA网络共享
 luci-app-upnp UPNP设置
 luci-app-wireguard WireGuard配置界面
 luci-app-natcap 远程界面管理模块和全锥形nat实现模块
+luci-app-natflow-users 用户认证（用户流量显示）模块
 ```
 
 进入`Kernel modules - USB Support`菜单，选择USB支持的驱动
@@ -160,6 +160,6 @@ CONFIG_PACKAGE_natcapd-server=y
 CONFIG_PACKAGE_natcapd=y
 CONFIG_PACKAGE_kmod-natcap=y
 
-# 为了单独让natflow工作，选择下面的包
+# 为了单独让natflow软件加速功能工作，选择下面的包
 CONFIG_PACKAGE_natflow-boot=y
 ```
