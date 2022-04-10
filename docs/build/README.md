@@ -139,6 +139,7 @@ luci-app-openvpn OPENVPN
 luci-app-samba SAMBA网络共享
 luci-app-upnp UPNP设置
 luci-app-wireguard WireGuard配置界面
+luci-app-natcap 远程界面管理模块和全锥形nat实现模块
 ```
 
 进入`Kernel modules - USB Support`菜单，选择USB支持的驱动
@@ -147,3 +148,18 @@ luci-app-wireguard WireGuard配置界面
 
 进入`Kernel modules - Wireless Drivers`菜单，选择无线支持的驱动，如果需要挂卡的驱动，也是在这里找
 
+### 3.2 关于natcap远程管理模块
+这个是远程界面管理(http://x-wrt.dev/)模块和全锥形nat实现模块，鉴于有些朋友不喜欢被远程管理，这里说明下，请自行选择是否需要这个模块。
+
+编译选择不集成这个模块，可以:
+```
+# 修改.config文件，删去掉这几个模块
+CONFIG_PACKAGE_luci-app-natcap=y
+CONFIG_PACKAGE_natcapd-client=y
+CONFIG_PACKAGE_natcapd-server=y
+CONFIG_PACKAGE_natcapd=y
+CONFIG_PACKAGE_kmod-natcap=y
+
+# 为了单独让natflow工作，选择下面的包
+CONFIG_PACKAGE_natflow-boot=y
+```
