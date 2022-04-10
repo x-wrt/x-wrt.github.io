@@ -135,7 +135,7 @@ luci-app-aria2 ARRIA2下载工具
 luci-app-ddns DDNS工具
 luci-app-mwan3 MWAN3负载均衡
 luci-app-openvpn OPENVPN
-luci-app-samba SAMBA网络共享
+luci-app-ksmbd Ksmbd文件网络共享（samba文件共享）
 luci-app-upnp UPNP设置
 luci-app-wireguard WireGuard配置界面
 luci-app-natcap 远程界面管理模块和全锥形nat实现模块
