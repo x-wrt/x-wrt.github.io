@@ -15,6 +15,7 @@ cd x-wrt
 
 #更新代码tag:
 git fetch origin
+git fetch origin --tags
 
 #列出可以使用的版本tag:
 git tag
