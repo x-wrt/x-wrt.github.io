@@ -17,6 +17,7 @@
 ### [安装软件包](./docs/opkg/)
 ### [USB功能解析](./docs/USB/)
 ### [设备远程管理界面使用](https://x-wrt.dev/)
+### [4G/5G网络的IPv6中继配置](./docs/ipv6-docs/relay.md)
 
 ## Contributing
 
