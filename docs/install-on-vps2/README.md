@@ -12,12 +12,15 @@
 
 #### 2.1 固件下载
 我们选择 x86 64 位 (MBR dos) 或 x86 64 位 (UEFI gpt) 的固件进行部署。您可以从以下链接下载所需的文件：
+
 [https://downloads.x-wrt.com/rom/](https://downloads.x-wrt.com/rom/)
+
 刷机所需的文件如下：
 ```
 x-wrt-x86-64-generic-initramfs-kernel.bin
 x-wrt-x86-64-generic-ext4-combined.img.gz
 ```
+
 如果您的系统是 EFI 系统，则还需要下载以下文件：
 ```
 x-wrt-x86-64-generic-ext4-combined-efi.img.gz
@@ -55,8 +58,7 @@ cp x-wrt-x86-64-generic-initramfs-kernel.bin /boot/vmlinuz-4.15.0-111-generic
 cp x-wrt-x86-64-generic-ext4-combined.img.gz /x-wrt.img.gz
 ```
 
-同时我们还需要一个安装脚本，脚本路径和固件保存的目录相同，这个例子是`/` ，脚本名字是 `x-wrt-install-vps.sh` 脚本的代码参考如下:
-(根据情况修改)
+同时我们还需要一个安装脚本，脚本路径和固件保存的目录相同，这个例子是`/` ，脚本名字是 `x-wrt-install-vps.sh` 脚本的代码参考如下：（根据情况修改）
 ```
 #!/bin/sh
 
@@ -97,12 +99,6 @@ uci set network.wan.ifname=eth0
 uci commit network
 ```
 
-如果上述处理妥当，就`reboot`重启，由于咱们用initramfs-kernel替换了内核，重启后将会进入initramfs-kernel的系统，然后这个系统会寻找 x-wrt-install-vps.sh 这个脚本执行刷机，这个脚本干的事情很简单，挂载第一个分区，拷贝固件到`/tmp`目录，然后执行刷机重启。
+如果以上操作正确无误，就执行`reboot`重启系统。由于我们使用initramfs-kernel替换了原有内核，重启后系统会进入initramfs-kernel环境。然后，该环境会查找 x-wrt-install-vps.sh 脚本并执行刷机操作。这个脚本执行的内容很简单：挂载第一个分区、将固件拷贝到 /tmp 目录中，然后执行刷机并重启。这个过程大概需要5分钟，看情况了。
 
-这个过程大概需要5分钟，看情况了。
-
-
-系统重启后，我们将可以访问到OpenWrt管理界面，比如本文的例子，管理界面地址 `https://[VPS_IP]/` 进入管理界面后，要立刻修改默认的管理密码，默认的账号密码是 root/admin，其次，如果有需要，进入系统管理权页面，开启ssh账号密码登录，并且要设置防火墙开放wan区22端口的访问。
-
-最后，自由的进行各种配置吧！一个漂亮又熟悉的OpenWrt Luci界面就在你面前了。
-
+系统重启后，你将能够通过访问OpenWrt的管理界面来配置路由器。以本文的例子为例，管理界面的地址是 `https://[VPS_IP]/`。进入管理界面后，你需要立即修改默认的管理密码。默认的账号密码是 root/admin。此外，如果需要，你可以进入系统管理页面，启用 SSH 账户密码登录，并设置防火墙以允许来自 WAN 区域的22端口访问。这样可以使你能够远程登录到路由器并进行更多的配置。
