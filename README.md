@@ -9,7 +9,6 @@
 ### [编译教程](./docs/build/)
 ### [多拨和负载均衡配置](./docs/xwan/)
 ### [假mesh简易教程](https://github.com/x-wrt/com.x-wrt/blob/master/luci-app-fakemesh/README.md)
-### [在VPS上部署(旧)](./docs/install-on-vps/)
 ### [在VPS上部署(新)](./docs/install-on-vps2/)
 ### [开启SSH登录](./docs/ssh-open/)
 ### [刷机教程汇总](./docs/tutorial/)
