@@ -65,8 +65,8 @@ cp x-wrt-x86-64-generic-ext4-combined.img.gz /x-wrt.img.gz
 # install to sda
 BDEV=sda
 
-# x-wrt.img.gz in disk part sda2
-DDEV=sda2
+# x-wrt.img.gz in disk part sda1
+DDEV=sda1
 
 # static ip
 #network=172.21.170.245,255.255.240.0,172.21.175.253,8.8.8.8
@@ -101,4 +101,11 @@ uci commit network
 
 如果以上操作正确无误，就执行`reboot`重启系统。由于我们使用initramfs-kernel替换了原有内核，重启后系统会进入initramfs-kernel环境。然后，该环境会查找 x-wrt-install-vps.sh 脚本并执行刷机操作。这个脚本执行的内容很简单：挂载第一个分区、将固件拷贝到 /tmp 目录中，然后执行刷机并重启。这个过程大概需要5分钟，看情况了。
 
-系统重启后，你将能够通过访问OpenWrt的管理界面来配置路由器。以本文的例子为例，管理界面的地址是 `https://[VPS_IP]/`。进入管理界面后，你需要立即修改默认的管理密码。默认的账号/密码是 admin/admin。此外，如果需要，你可以进入系统管理页面，启用 SSH 账户密码登录，并设置防火墙以允许来自 WAN 区域的22端口访问。这样可以使你能够远程登录到路由器并进行更多的配置。
+#### 2.6 总结
+
+整个刷机过程，大概就三个步骤:
+1. 下载好两个固件文件，保存到特定的路径
+2. 拷贝并且根据情况修改好一个脚本(`x-wrt-install-vps.sh`)，保存到特定路径
+3. 重启(reboot)并等待自动安装完成
+
+系统重启后，你将能够通过访问OpenWrt的管理界面来配置路由器。以本文的例子为例，管理界面的地址(HTTPS)是 `https://[VPS_IP]/`。进入管理界面后，你需要立即修改默认的管理密码。默认的账号/密码是 admin/admin。此外，如果需要，你可以进入系统管理页面，启用 SSH 账户密码登录，并设置防火墙以允许来自 WAN 区域的22端口访问。这样可以使你能够远程登录到路由器并进行更多的配置。
