@@ -1,8 +1,8 @@
-# X-Wrt
+# X-WRT
 
 ## 介绍
 
-[X-Wrt](https://x-wrt.com/)是一个面向普通用户的路由系统，它基于[OpenWrt](https://openwrt.org/)项目做了许多易用性的改进，目标是成为一个标准化的普通用户可以轻松使用的路由器系统。
+[X-WRT](https://x-wrt.com/)是一个面向普通用户的路由系统，它基于[OpenWrt](https://openwrt.org/)项目做了许多易用性的改进，目标是成为一个标准化的普通用户可以轻松使用的路由器系统。
 
 ## 教程
 
