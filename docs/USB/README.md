@@ -27,5 +27,5 @@
 ## D. 扩展系统空间到U盘
 
 1. 插入U盘
-2. 登录ssh执行初始化命令：`dd if=/dev/zero of=/dev/sda bs=32M count=1; sync`
+2. 登录ssh，执行清空并初始化U盘：`dd if=/dev/zero of=/dev/sda bs=32M count=1; sync`
 3. 重启路由器，重启之后就自动扩展U盘空间了，可以安装更多app
