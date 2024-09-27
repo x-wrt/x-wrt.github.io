@@ -16,7 +16,7 @@
 ### [USB功能解析](./docs/USB/)
 ### [设备远程管理界面使用](https://x-wrt.dev/)
 ### [4G/5G网络的IPv6中继配置](./docs/ipv6-docs/relay.md)
-### [IPv6万能中继配置](./docs/ipv6-docs/xrelay.md)
+### [IPv6虚拟桥接配置](./docs/ipv6-docs/xrelay.md)
 ### [IPv6网络的NAT6配置上网](./docs/ipv6-docs/nat6.md)
 
 ## Contributing
