@@ -1,133 +1,144 @@
-# 使用虚拟机运行 X-WRT：打造轻便旅行路由器（适用于 macOS M 系列）
-在外出差、旅游时，很多人会携带一个旅行路由器，以便更方便地连网、翻墙、组网等。但随身带个设备终归麻烦。现在，有一个更轻巧的方案：直接在你的 M 系列 Mac（如 MacBook Air/Pro）上运行一个 X-WRT 虚拟机，模拟旅行路由器的功能，完全免设备，随插随用！
+# 使用 x-wrt 虚拟机替代旅行路由器教程
 
-## ✅ 方案概览
-我们将使用 QEMU 虚拟机在 macOS 上运行一个定制好的 X-WRT 系统镜像，X-WRT 是基于 OpenWRT 的路由系统，轻量灵活，适合网络穿透、科学上网、旁路由等场景。
+在旅行时，有些朋友可能需要携带一个旅行路由器来上网，方便通过 VPN 或其他方式组网。然而，携带额外的设备可能会显得麻烦。本文将介绍如何使用虚拟机运行 x-wrt 系统，作为旅行路由器的替代方案。
 
-## 🧰 准备工作
-1. 安装 Homebrew：  
-   ```bash
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-2. 安装 QEMU
-   ```bash
-   brew install qemu
-   ```
-3. 下载 X-WRT 虚拟机镜像包
-   从官方提供的地址下载：
+## 环境要求
 
-   [👉 x-wrt-macos.tgz 下载地址](https://downloads.x-wrt.com/rom/Downloads/x-wrt-macos.tgz)
+- 一台搭载 **M 芯片**的 Mac 电脑（例如 MacBook 系列）
+- 已安装 Homebrew 包管理器
 
-4. 解压到主目录下
-   ```bash
-   tar -xzvf x-wrt-macos.tgz -C ~/
-   ```
-   默认目录为：`~/x-wrt-macos`
+## 快速开始
 
-## 🚀 启动 X-WRT 虚拟路由器
-打开终端，进入目录并运行启动脚本：
+### 1. 安装 QEMU
+
+在终端中运行以下命令以安装 QEMU：
+
+```bash
+brew install qemu
+```
+
+### 2. 下载 x-wrt 虚拟机和运行脚本
+
+下载打包好的 [x-wrt 虚拟机和运行脚本](https://downloads.x-wrt.com/rom/Downloads/x-wrt-macos.tgz)。
+
+### 3. 解压文件
+
+将下载的文件解压到目录，例如 `~/x-wrt-macos`：
+
+```bash
+tar -xzvf x-wrt-macos.tgz -C ~/
+```
+
+### 4. 启动 x-wrt 虚拟机
+
+打开终端，依次运行以下命令：
+
 ```bash
 cd ~/x-wrt-macos
 sudo sh qemu.root.sh
 ```
-系统会要求输入当前用户的密码（用于修改网络配置），输入后回车。
 
-等待大约 10~20 秒，X-WRT 启动完成后，你的 macOS 就像连接了一个虚拟路由器
+输入管理员密码并按下回车后，系统会启动 x-wrt 虚拟机。启动完成后，您可以通过浏览器访问管理界面。
 
-## 🌐 访问路由器 Web 管理界面
-打开浏览器访问：
-```
-http://192.168.15.1
-```
-默认账号密码：
+### 5. 管理 x-wrt 路由器
 
-- 用户名：`admin`
+在浏览器中访问 [http://192.168.15.1](http://192.168.15.1) 即可进入 x-wrt 的管理界面，默认的用户名为 `admin`，密码为 `admin`。
 
-- 密码：`admin`
+### 6. 关闭 x-wrt 虚拟机
 
-你可以在这里配置 VPN、旁路由、端口转发等所有 OpenWRT 支持的功能。
+如果需要关闭虚拟机，在终端界面中按下回车键，输入以下命令：
 
-## 📴 如何关闭虚拟路由器
-回到运行`QEMU`的终端界面：
-
-按下`Enter`，出现登录提示。
-
-输入用户名`root`，密码`admin`。
-
-输入命令：
-```
+```bash
+# 登录虚拟机
+root
+admin
+# 执行关机命令
 poweroff
 ```
-虚拟机将优雅关机，并自动恢复 macOS 网络设置（DHCP）。
 
-## 📜 启动脚本 qemu.root.sh 详解
-脚本 qemu.root.sh：
+虚拟机关闭后，网络将恢复到原始状态。
+
+---
+
+## 网络拓扑变化
+
+运行虚拟机前后，网络拓扑会发生如下变化：
+
+### 运行前
+
+```plaintext
+MacBook电脑 ---> Wi-Fi网卡上网（DHCP） ---> 出口路由器
+```
+
+**图示：**
+
+```plaintext
++-------------+    DHCP    +------------------+    Internet
+| MacBook电脑 | ---------> | Wi-Fi网卡 (en0) |  -----------> 出口路由器
++-------------+            +------------------+
+```
+
+### 运行后
+
+```plaintext
+MacBook电脑（静态IP） ---> x-wrt虚拟路由器 ---> Wi-Fi网卡上网（DHCP） ---> 出口路由器
+```
+
+**图示：**
+
+```plaintext
++-------------+    静态IP    +-----------------+    DHCP    +------------------+    Internet
+| MacBook电脑 | -----------> | x-wrt虚拟路由器 | ---------> | Wi-Fi网卡 (en0) |  -----------> 出口路由器
++-------------+              +-----------------+            +------------------+
+```
+
+---
+
+## qemu.root.sh 脚本详解
+
+`qemu.root.sh` 脚本的主要功能是：
+
+1. **检测默认网络设备**：自动识别当前的默认网络设备。
+2. **配置静态 IP 和 DNS**：为虚拟机设置静态 IP 和 DNS。
+3. **启动 QEMU 虚拟机**：加载 x-wrt 系统并运行。
+4. **恢复网络设置**：在虚拟机关闭后，将网络恢复为 DHCP 模式。
+
+以下是脚本的详细解析：
+
+### 1. 检测默认网络设备
+
+脚本通过以下命令获取当前默认网络设备名称（如 `en0`）：
+
 ```bash
-#!/bin/sh
-
-SRV=Wi-Fi
-ifname=en0
-
-# 步骤 1：获取默认路由出口设备名（如 en0）
 DEVICE=$(route get default 2>/dev/null | awk '/interface: / {print $2}')
-if [ -z "$DEVICE" ]; then
-    echo "❌ 无法识别默认网络设备"
-    exit 1
-fi
+```
 
-echo "🔍 当前默认上网设备为: $DEVICE"
-ifname="$DEVICE"
+并根据设备名称找到对应的网络服务名称：
 
-# 步骤 2：找到该设备对应的 networkservice 名称
-SERVICE=$(networksetup -listallhardwareports | \
-    awk -v dev="$DEVICE" '
-    $1 == "Hardware" && $2 == "Port:" {port=$3}
-    $1 == "Device:" && $2 == dev {print port}' \
-)
+```bash
+SERVICE=$(networksetup -listallhardwareports | awk -v dev="$DEVICE" '...')
+```
 
-if [ -z "$SERVICE" ]; then
-    echo "❌ 无法匹配到 network service 名称"
-    exit 1
-fi
+### 2. 配置静态 IP 和 DNS
 
-echo "✅ 对应的网络服务名称是: $SERVICE"
-SRV="$SERVICE"
+配置静态 IP 地址、子网掩码、默认网关和 DNS：
 
-# 配置参数
+```bash
 STATIC_IP="192.168.15.123"
 SUBNET="255.255.255.0"
 ROUTER="192.168.15.1"
 DNS1="223.5.5.5"
 DNS2="8.8.8.8"
 
-echo "⚙️ 设置静态 IP 为 $STATIC_IP"
 networksetup -setmanual "$SRV" $STATIC_IP $SUBNET $ROUTER
-echo "⚙️ 设置 DNS 为 $DNS1 和 $DNS2"
 networksetup -setdnsservers "$SRV" $DNS1 $DNS2
+```
 
-echo "⚙️ 设置 网卡关闭tso"
-ifconfig $ifname -tso
+### 3. 启动 QEMU 虚拟机
 
-_DIR=$(dirname $0)
-mac=$(ifconfig $ifname | awk '/ether/{print $2}')
-md5=$(echo -n $mac | md5)
+脚本根据系统架构（如 `arm64` 或 `x86_64`）加载适配的内核和 rootfs 文件，并启动虚拟机：
 
-echo "🕐"
-echo "🕐"
-echo "🕐 qemu 启动x-wrt虚拟机..."
-echo "." && sleep 1
-echo ".." && sleep 1
-echo "..." && sleep 5
-
-ARCH=x86_64
-DEVTYPE=pci
-case $(uname -m) in
-	arm64)
-		ARCH=aarch64
-		DEVTYPE=device
-	;;
-esac
-
+```bash
 qemu-system-$ARCH -m 256 -smp 2 -cpu host -M virt,highmem=off \
 -nographic \
 -accel hvf \
@@ -136,35 +147,25 @@ qemu-system-$ARCH -m 256 -smp 2 -cpu host -M virt,highmem=off \
 -append root=/dev/vda \
 -netdev vmnet-bridged,id=net0,ifname=$ifname \
 -device virtio-net-$DEVTYPE,netdev=net0,mac=${mac:0:9}${md5:0:2}:${md5:2:2}:${md5:4:2}
-#-nic vmnet-bridged,ifname=$ifname,mac=${mac:0:9}${md5:0:2}:${md5:2:2}:${md5:4:2}
+```
 
-echo "♻️ 正在恢复为 DHCP 模式..."
+### 4. 恢复网络设置
+
+在虚拟机关闭后，脚本会恢复网络为 DHCP 模式：
+
+```bash
 networksetup -setdnsservers "$SRV" "Empty"
 networksetup -setdhcp $SRV
-
-echo "✅ 已恢复为自动获取 IP 和 DNS！"
-
-exit 0
 ```
-这个脚本的作用不仅仅是启动虚拟机，还包括**网络接口选择**、**静态 IP 设置**、**DNS 配置**、**虚拟机桥接运行**、**网络恢复**等自动化步骤。下面是脚本主要功能分解：
 
-### ✅ 功能要点：
-1. **自动识别当前使用的默认上网接口（如 en0）**
-2. **自动获取该接口对应的 macOS 网络服务名**
-3. **设置该接口为静态 IP（192.168.15.123），用于桥接到 X-WRT**
-4. **配置 DNS 为公共 DNS（223.5.5.5 / 8.8.8.8）**
-5. **禁用 TSO，提升虚拟机网络兼容性**
-6. **根据当前平台选择 ARM 或 x86 架构运行 QEMU**
-7. **使用 macOS 原生虚拟化加速（hvf）启动 X-WRT 虚拟机**
-8. **桥接物理网卡到虚拟机，实现与外部网络直通**
-9. **自动恢复原始 DHCP 配置，确保退出后网络无异常**
+---
 
-### 🚦 关键技术细节：
-- `qemu-system-$ARCH`: 根据平台（arm64/x86_64）自动切换 QEMU 架构
-- `vmnet-bridged`: 使用 macOS 原生桥接技术，无需额外 TUN/TAP 驱动
-- `virtio-net`: 虚拟高性能网卡驱动
-- `-nographic`: 不使用图形窗口，纯命令行运行
-- `mac=$(ifconfig $ifname | awk '/ether/{print $2}')`: 自动生成唯一 MAC 地址，避免冲突
+## 注意事项
 
-## 🧳 总结
-通过这个方案，你可以在任何地方使用 MacBook 轻松模拟出一台全功能路由器，不再需要携带额外设备，满足上网、组网、科学访问等各种需求。
+1. **管理员权限**：运行脚本需要管理员权限，请确保您有权限执行 `sudo` 命令。
+2. **网络冲突**：虚拟机使用的 IP 地址段为 `192.168.15.x`，请确保该地址段不会与现有网络冲突。
+3. **性能限制**：虚拟机性能可能受限于设备资源，请合理分配内存和 CPU。
+
+---
+
+通过本文提供的方案，您可以轻松地在 macOS 上使用 x-wrt 虚拟机代替旅行路由器，实现便捷的网络连接与管理。
