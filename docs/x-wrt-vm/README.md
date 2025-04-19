@@ -61,6 +61,91 @@ poweroff
 虚拟机将优雅关机，并自动恢复 macOS 网络设置（DHCP）。
 
 ## 📜 启动脚本 qemu.root.sh 详解
+脚本 qemu.root.sh：
+```bash
+#!/bin/sh
+
+SRV=Wi-Fi
+ifname=en0
+
+# 步骤 1：获取默认路由出口设备名（如 en0）
+DEVICE=$(route get default 2>/dev/null | awk '/interface: / {print $2}')
+if [ -z "$DEVICE" ]; then
+    echo "❌ 无法识别默认网络设备"
+    exit 1
+fi
+
+echo "🔍 当前默认上网设备为: $DEVICE"
+ifname="$DEVICE"
+
+# 步骤 2：找到该设备对应的 networkservice 名称
+SERVICE=$(networksetup -listallhardwareports | \
+    awk -v dev="$DEVICE" '
+    $1 == "Hardware" && $2 == "Port:" {port=$3}
+    $1 == "Device:" && $2 == dev {print port}' \
+)
+
+if [ -z "$SERVICE" ]; then
+    echo "❌ 无法匹配到 network service 名称"
+    exit 1
+fi
+
+echo "✅ 对应的网络服务名称是: $SERVICE"
+SRV="$SERVICE"
+
+# 配置参数
+STATIC_IP="192.168.15.123"
+SUBNET="255.255.255.0"
+ROUTER="192.168.15.1"
+DNS1="223.5.5.5"
+DNS2="8.8.8.8"
+
+echo "⚙️ 设置静态 IP 为 $STATIC_IP"
+networksetup -setmanual "$SRV" $STATIC_IP $SUBNET $ROUTER
+echo "⚙️ 设置 DNS 为 $DNS1 和 $DNS2"
+networksetup -setdnsservers "$SRV" $DNS1 $DNS2
+
+echo "⚙️ 设置 网卡关闭tso"
+ifconfig $ifname -tso
+
+_DIR=$(dirname $0)
+mac=$(ifconfig $ifname | awk '/ether/{print $2}')
+md5=$(echo -n $mac | md5)
+
+echo "🕐"
+echo "🕐"
+echo "🕐 qemu 启动x-wrt虚拟机..."
+echo "." && sleep 1
+echo ".." && sleep 1
+echo "..." && sleep 5
+
+ARCH=x86_64
+DEVTYPE=pci
+case $(uname -m) in
+	arm64)
+		ARCH=aarch64
+		DEVTYPE=device
+	;;
+esac
+
+qemu-system-$ARCH -m 256 -smp 2 -cpu host -M virt,highmem=off \
+-nographic \
+-accel hvf \
+-kernel ${_DIR}/$ARCH-kernel.bin \
+-drive file=${_DIR}/$ARCH-rootfs.img,format=raw,if=virtio \
+-append root=/dev/vda \
+-netdev vmnet-bridged,id=net0,ifname=$ifname \
+-device virtio-net-$DEVTYPE,netdev=net0,mac=${mac:0:9}${md5:0:2}:${md5:2:2}:${md5:4:2}
+#-nic vmnet-bridged,ifname=$ifname,mac=${mac:0:9}${md5:0:2}:${md5:2:2}:${md5:4:2}
+
+echo "♻️ 正在恢复为 DHCP 模式..."
+networksetup -setdnsservers "$SRV" "Empty"
+networksetup -setdhcp $SRV
+
+echo "✅ 已恢复为自动获取 IP 和 DNS！"
+
+exit 0
+```
 这个脚本的作用不仅仅是启动虚拟机，还包括**网络接口选择**、**静态 IP 设置**、**DNS 配置**、**虚拟机桥接运行**、**网络恢复**等自动化步骤。下面是脚本主要功能分解：
 
 ### ✅ 功能要点：
