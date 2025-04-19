@@ -18,7 +18,7 @@
 ### [4G/5G网络的IPv6中继配置](./docs/ipv6-docs/relay.md)
 ### [IPv6虚拟桥接配置](./docs/ipv6-docs/xrelay.md)
 ### [IPv6网络的NAT6配置上网](./docs/ipv6-docs/nat6.md)
-### [使用虚拟机运行 X-WRT：打造轻便旅行路由器（适用于 macOS M 系列](./docs/x-wrt-vm/)
+### [虚拟轻便旅行路由器（适用于 macOS M 系列](./docs/x-wrt-vm/)
 
 ## Contributing
 
