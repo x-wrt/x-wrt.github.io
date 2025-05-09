@@ -20,6 +20,8 @@
 ### [IPv6网络的NAT6配置上网](./docs/ipv6-docs/nat6.md)
 ### [虚拟轻便旅行路由器（适用于 macOS M 系列](./docs/x-wrt-vm/)
 
+## [更多更新的更全面的教程 请看Wiki页面](https://github.com/x-wrt/x-wrt/wiki)
+
 ## Contributing
 
 1. Fork it (any repositority on [https://github.com/x-wrt](https://github.com/x-wrt))
